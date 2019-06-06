@@ -266,25 +266,30 @@ public class MojString {
     public MojString izbaciString(String uljez) {
         //Funkcija treba da izbaci iz stringa(tj. niza znakova) tekst koji je poslan funkciji kao parametar
 
-        char nizs[] = new char[this.niz.length];
+        char nizs[] = new char[this.niz.length-uljez.length()];
         int brEl = 0;
-        int brEl1 = 0;
-        for (int i = 0; i < this.niz.length; i++) {
-            if(this.niz[i] != uljez.charAt(brEl1)){
-                nizs[brEl] = this.niz[i];
-                brEl++;
+        int i = 0;
+        while(i < this.niz.length) {
 
-            }else if (this.niz[i] == uljez.charAt(i)){
-            for (int j = 0; j < uljez.length(); j++) {
-                if(i < uljez.length()-1){
-            if (this.niz[i] == uljez.charAt(j)) {
+            if (this.niz[i] == uljez.charAt(0)) {
+                if (i <= this.niz.length-uljez.length()) {
+                    if (this.niz[i + uljez.length() - 1] == uljez.charAt(uljez.length() - 1)) {
+                        i += uljez.length();
+                        if (this.niz[i += 1] == ' '){
+                            i++;
+                        }
 
-                    i++;
+                    }
                 }
             }
-            }
+            if (i < this.niz.length) {
+                nizs[brEl] = this.niz[i];
+                brEl++;
+                i++;
             }
         }
+
+
         this.niz = nizs;
         return this;}
 

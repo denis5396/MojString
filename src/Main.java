@@ -21,6 +21,6 @@ public class Main {
         System.out.print(obj.longestWord());
         System.out.print(obj.shortestWord());
         System.out.println("");
-        System.out.print(obj1.izbaciString("Ovo je n"));
+        System.out.print(obj1.izbaciString("neki"));
     }
 }
