@@ -268,27 +268,39 @@ public class MojString {
 
         char nizs[] = new char[this.niz.length-uljez.length()];
         int brEl = 0;
+        int brEl1 = 0;
         int i = 0;
         while(i < this.niz.length) {
 
             if (this.niz[i] == uljez.charAt(0)) {
                 if (i <= this.niz.length-uljez.length()) {
-                    if (this.niz[i + uljez.length() - 1] == uljez.charAt(uljez.length() - 1)) {
-                        i += uljez.length();
-                        if (this.niz[i += 1] == ' '){
+                    while (this.niz[i] == uljez.charAt(brEl1) ) {
                             i++;
+                            brEl1++;
+                            if (this.niz[i] == uljez.charAt(uljez.length() - 1)) {
+
+                                i++;
+                                break;
+                            }
+
                         }
 
+                    if (this.niz[i] == ' ') {
+                        i++;
                     }
+
                 }
+
             }
+
+
+
             if (i < this.niz.length) {
                 nizs[brEl] = this.niz[i];
                 brEl++;
                 i++;
             }
         }
-
 
         this.niz = nizs;
         return this;}
