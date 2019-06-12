@@ -271,27 +271,25 @@ public class MojString {
         int brEl1 = 0;
         int i = 0;
         int j;
-        int counter = 0;
         boolean trig = false;
+
         while(i < this.niz.length) {
 
             if (this.niz[i] == uljez.charAt(0)) {
                 if (i <= this.niz.length-uljez.length()) {
                     j = i;
                     if(!jeLiSlovo(this.niz[j-1])) {
-                        while (this.niz[j] == uljez.charAt(brEl1) && counter < uljez.length()) {
+                        while (this.niz[j] == uljez.charAt(brEl1)) {
                             j++;
                             brEl1++;
-                            counter++;
+
                             if (this.niz[j] != uljez.charAt(brEl1)) {
                                 brEl1 = 0;
-                                counter = 0;
                                 break;
                             }
                             if (this.niz[j] == uljez.charAt(uljez.length() - 1)) {
 
                                 brEl1 = 0;
-                                counter = 0;
                                 i += uljez.length();
                                 i++;
                                 trig = true;
