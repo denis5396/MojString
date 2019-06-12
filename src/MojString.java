@@ -270,36 +270,50 @@ public class MojString {
         int brEl = 0;
         int brEl1 = 0;
         int i = 0;
+        int j;
+        int counter = 0;
+        boolean trig = false;
         while(i < this.niz.length) {
 
-            if (this.niz[i] == uljez.charAt(0)) {
+            if (this.niz[i] == uljez.charAt(0) && this.niz[i+uljez.length()-1] == uljez.charAt(uljez.length()-1)) {
                 if (i <= this.niz.length-uljez.length()) {
-                    while (this.niz[i] == uljez.charAt(brEl1) ) {
-                            i++;
+                    j = i;
+                    if(!jeLiSlovo(this.niz[j-1])) {
+                        while (this.niz[j] == uljez.charAt(brEl1) && counter < uljez.length()) {
+                            j++;
                             brEl1++;
-                            if (this.niz[i] == uljez.charAt(uljez.length() - 1)) {
-
-                                i++;
+                            counter++;
+                            if (this.niz[j] != uljez.charAt(brEl1)) {
+                                brEl1 = 0;
+                                counter = 0;
                                 break;
+                            }
+                            if (this.niz[j] == uljez.charAt(uljez.length() - 1)) {
+
+                                brEl1 = 0;
+                                counter = 0;
+                                i += uljez.length();
+                                i++;
+                                trig = true;
+
                             }
 
                         }
-
-                    if (this.niz[i] == ' ') {
-                        i++;
                     }
 
                 }
 
             }
 
-
-
             if (i < this.niz.length) {
-                nizs[brEl] = this.niz[i];
-                brEl++;
-                i++;
+                if (!trig) {
+
+                    nizs[brEl] = this.niz[i];
+                    brEl++;
+                    i++;
+                }
             }
+            trig = false;
         }
 
         this.niz = nizs;
