@@ -275,7 +275,7 @@ public class MojString {
         boolean trig = false;
         while(i < this.niz.length) {
 
-            if (this.niz[i] == uljez.charAt(0) && this.niz[i+uljez.length()-1] == uljez.charAt(uljez.length()-1)) {
+            if (this.niz[i] == uljez.charAt(0)) {
                 if (i <= this.niz.length-uljez.length()) {
                     j = i;
                     if(!jeLiSlovo(this.niz[j-1])) {
